@@ -21,3 +21,8 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+input {
+  border:none;
+}
+</style>
