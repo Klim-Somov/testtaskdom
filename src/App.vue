@@ -7,13 +7,20 @@
       <p>введите длинну стены в метрах</p>
       <input v-model.number="wallHeight" placeholder="2.5" />
     </form>
-<div class="opening">
-  <p>введите площадь проема в м²</p>
-      <Opening :onPush="onPush" v-for="(doors, index) in openings" :key="index" />
-      <MainButton @click="addDoor" text = "добавить проем" />
-</div> 
+    <div class="opening">
+      <p>введите площадь проема в м²</p>
+      <Opening
+        :onPush="onPush"
+        v-for="(doors, index) in openings"
+        :key="index"
+      />
+      <MainButton @click="addDoor" text="добавить проем" />
+    </div>
     <div>
-       <MainButton @click="calculateOutcome" text = "расчитать количество блоков" />
+      <MainButton
+        @click="calculateOutcome"
+        text="расчитать количество блоков"
+      />
     </div>
     <div v-if="outcomeSum">
       блоков для постройки перегородки потребуется: {{ outcomeSum }} шт.
@@ -23,7 +30,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 import Opening from "@/components/Opening.vue";
 import MainButton from "@/components/MainButton.vue";
@@ -35,24 +42,24 @@ export default defineComponent({
   setup() {
     const openings = ref(new Array(1));
 
-    const addDoor = () => {
+    function addDoor() {
       openings.value.push(1);
-    };
-    const onPush = (item) => {
+    }
+    function onPush(item: number) {
       openingsSquare.value += item;
-    };
+    }
     const wallWidth = ref();
     const wallHeight = ref();
-    const openingsSquare = ref(null);
+    const openingsSquare = ref(0);
     const outcomeSum = ref();
     const outcomeWeight = ref();
-    const calculateOutcome = () => {
+    function calculateOutcome() {
       const result = Math.ceil(
         (wallWidth.value * wallHeight.value) / 0.3335 - openingsSquare.value
       );
       result < 0 ? (outcomeSum.value = "") : (outcomeSum.value = result);
       outcomeWeight.value = outcomeSum.value * 36;
-    };
+    }
 
     return {
       openings,
@@ -69,9 +76,8 @@ export default defineComponent({
 });
 </script>
 
-<style >
+<style>
 #app {
-  
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -83,10 +89,10 @@ body {
   background-color: rgb(143, 165, 189);
 }
 .content {
-  padding-bottom: 20px ;
+  padding-bottom: 20px;
   padding: 10px;
   background-color: rgb(217, 235, 235);
-  max-width: 600px ;
+  max-width: 600px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -100,20 +106,14 @@ body {
   border: none;
   border-radius: 15px;
   padding: 8px;
-
 }
 .opening {
   background-color: rgba(59, 59, 60, 0.4);
-   border: none;
+  border: none;
   border-radius: 15px;
   padding: 20px;
-
-
 }
 .opening > input {
   border: none;
 }
-
-
-
 </style>
