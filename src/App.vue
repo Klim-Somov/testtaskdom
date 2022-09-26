@@ -1,11 +1,11 @@
 <template>
   <div class="content">
-    <h1>Калькулятор Пазогребневых Гипсовах Плит</h1>
+    <h1>Калькулятор Пазогребневых Гипсовых Плит</h1>
     <form class="form">
       <p>введите высоту стены в метрах</p>
-      <input v-model.number="wallWidth" placeholder="7" />
+      <input v-model.number="wallWidth" placeholder="например 2,5" />
       <p>введите длинну стены в метрах</p>
-      <input v-model.number="wallHeight" placeholder="2.5" />
+      <input v-model.number="wallHeight" placeholder="например 5" />
     </form>
     <div class="opening">
       <p>введите площадь проема в м²</p>
@@ -58,7 +58,6 @@ export default defineComponent({
       if (wallS === openingsSquare.value) {
         return;
       }
-
       result < 0 ? (outcomeSum.value = "") : (outcomeSum.value = result);
       outcomeWeight.value = outcomeSum.value * 36;
     }
@@ -103,6 +102,13 @@ body {
   min-height: 100vh;
   border-radius: 20px;
 }
+.form{
+  background-color: #3b3b3c46;
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  
+}
 .form > input {
   background-color: rgb(247, 247, 247);
   border: none;
@@ -110,7 +116,7 @@ body {
   padding: 8px;
 }
 .opening {
-  background-color: rgba(59, 59, 60, 0.4);
+  background-color: #3b3b3c46;
   border: none;
   border-radius: 15px;
   padding: 20px;

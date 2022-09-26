@@ -4,7 +4,13 @@
       @change="onPush(openingsSquare)"
       v-model.number="openingsSquare"
       type="text"
-      placeholder="4.5"
+      placeholder="например 4.5"
+    />
+    <input
+      @change="onPush(openingsSquare)"
+      v-model.number="openingsSquare"
+      type="text"
+      placeholder="например 4.5"
     />
   </form>
 </template>
