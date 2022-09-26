@@ -3,9 +3,9 @@
     <h1>Калькулятор Пазогребневых Гипсовых Плит</h1>
     <form class="form">
       <p>введите высоту стены в метрах</p>
-      <input v-model.number="wallWidth" placeholder="например 2,5" />
+      <input v-model.number="wallWidth" placeholder="например 2" />
       <p>введите длинну стены в метрах</p>
-      <input v-model.number="wallHeight" placeholder="например 5" />
+      <input v-model.number="wallHeight" placeholder="например 2.5" />
     </form>
     <div class="opening">
       <p>введите площадь проема в м²</p>
